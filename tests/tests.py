@@ -1,7 +1,7 @@
 import sys
 
 # adding Folder_2 to the system path
-sys.path.insert(0, 'C:/Users/david/Documents/GitHub/FileTransfer/FileTransfer')
+# sys.path.insert(0, 'C:/Users/david/Documents/GitHub/FileTransfer/FileTransfer') TODO: fix abs path
 import src.encryption as enc
 import os
 
