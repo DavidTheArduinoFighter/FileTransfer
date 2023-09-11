@@ -16,11 +16,11 @@ class Server:
 
         print("[+] Listening...")
 
-        """ Accepting the connection from the client. """
+        # Accepting the connection from the client.
         conn, addr = sock.accept()
         print(f"[+] Client connected from {addr[0]}:{addr[1]}")
 
-        """ Receiving the filename and filesize from the client. """
+        # Receiving the filename and filesize from the client.
         data = conn.recv(self.size).decode(self.format)
         item = data.split("_")
         filename = item[0]
@@ -29,7 +29,7 @@ class Server:
         print("[+] Filename and filesize received from the client.")
         conn.send("Filename and filesize received".encode(self.format))
 
-        """ Data transfer """
+        # Data transfer
         bar = tqdm(range(filesize), f"Receiving {filename}", unit="B", unit_scale=True, unit_divisor=self.size)
 
         with open(f"recv_{filename}", "w") as f:
@@ -44,7 +44,7 @@ class Server:
 
                 bar.update(len(data))
 
-        """ Closing connection. """
+        # Closing connection.
         conn.close()
         sock.close()
 
